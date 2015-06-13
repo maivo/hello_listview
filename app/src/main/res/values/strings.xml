@@ -1,16 +1,12 @@
 <resources>
     <string name="app_name">aHelloListView</string>
 
-    <string name="hello_world">Hello Mock Banking</string>
-    <string name="hello_login">Hello Login</string>
-    <string name="action_go">Go</string>
-    <string name="activity_main_title">Main</string>
-    <string name="activity_second_title">Second</string>
-
-    <string name="account_summary_title">Account Summary</string>
-
-
-    <string name="action_go_main">Go Main</string>
-    <string name="action_go_second">Go Second</string>
-    <string name="action_settings">Settings</string>
+    <string name="title_activity_weather">Weather Information</string>
+    <string name="strCity">Sydney</string>
+    <string name="strWeather">Sunny</string>
+    <string name="strTemp">32°C</string>
+    <string name="txtTemp">Temp</string>
+    <string name="strWindSpeed">5kmph</string>
+    <string name="txtWindSpeed">WindSpeed</string>
+    <string name="Separator">---</string>
 </resources>
