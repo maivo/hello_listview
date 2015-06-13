@@ -1,6 +1,6 @@
 <resources>
     <!-- Strings related to login -->
-    <string name="title">01_initial_mockbanking</string>
+    <string name="title">codeproject_weather_listview</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Login</string>
