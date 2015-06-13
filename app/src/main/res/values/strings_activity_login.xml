@@ -1,6 +1,6 @@
 <resources>
     <!-- Strings related to login -->
-    <string name="title">Login</string>
+    <string name="title">LoginFromBranch</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Login</string>
