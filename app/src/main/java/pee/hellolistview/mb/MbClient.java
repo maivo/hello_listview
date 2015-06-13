@@ -1,4 +1,4 @@
-package pee.weatherlistview.mb;
+package pee.hellolistview.mb;
 
 import android.content.Context;
 
@@ -9,8 +9,8 @@ import com.x5.template.Chunk;
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.StringEntity;
 
-import pee.weatherlistview.ui.AppSession;
-import pee.weatherlistview.util.AssetUtils;
+import pee.hellolistview.ui.AppSession;
+import pee.hellolistview.util.AssetUtils;
 
 /**
  * Created by pvu_asus on 28/05/2015.

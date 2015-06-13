@@ -1,18 +1,36 @@
-package pee.weatherlistview.mb;
+package pee.hellolistview.ui;
+
+import android.app.Application;
+
+import java.util.List;
+
+import pee.hellolistview.mb.Account;
 
 /**
  * Created by pvu_asus on 25/05/2015.
  */
-public class AuthenticateUserResponse  {
+public class AppSession extends Application {
+    String userName;
+    String password;
     String channelSessionId;
-
-    //eg:<ns1:entry ns1:key="ChallengeQuestion" xsi:type="xsd:string">How many TVs are in your home?</ns1:entry>
     String challengeQuestion;
     String challengeQuestionId;
-    String backendUserId;
+    List<Account> accountList;
 
-    public boolean isChallengeQuestion(){
-        return challengeQuestionId != null;
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getChannelSessionId() {
@@ -22,6 +40,7 @@ public class AuthenticateUserResponse  {
     public void setChannelSessionId(String channelSessionId) {
         this.channelSessionId = channelSessionId;
     }
+
 
     public String getChallengeQuestion() {
         return challengeQuestion;
@@ -39,17 +58,22 @@ public class AuthenticateUserResponse  {
         this.challengeQuestionId = challengeQuestionId;
     }
 
+    public List<Account> getAccountList() {
+        return accountList;
+    }
 
+    public void setAccountList(List<Account> accountList) {
+        this.accountList = accountList;
+    }
 
     @Override
     public String toString() {
-        return "AuthenticateUserResponse{" +
-                "channelSessionId='" + channelSessionId + '\'' +
+        return "AppSession{" +
+                "userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", channelSessionId='" + channelSessionId + '\'' +
                 ", challengeQuestion='" + challengeQuestion + '\'' +
                 ", challengeQuestionId='" + challengeQuestionId + '\'' +
                 '}';
     }
-
-
-
 }
