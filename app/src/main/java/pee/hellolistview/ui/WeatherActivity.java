@@ -74,60 +74,20 @@ public class WeatherActivity extends Activity {
 
             HashMap<String, String> map = null;
 
-            for (int i = 0; i < weatherList.getLength(); i++) {
+
+            for (int i = 0; i < 4; i++) {
 
                 map = new HashMap<String, String>();
+                map.put(KEY_ID, i+ ":1");
+                map.put(KEY_CITY, "Berlin"+i);
+                map.put(KEY_TEMP_C, "0°C");
+                map.put(KEY_CONDN, "Snowing");
+                map.put(KEY_SPEED, "5 kmph");
+                map.put(KEY_ICON, "snowing");
 
-                Node firstWeatherNode = weatherList.item(i);
+                //Add to the Arraylist
+                weatherDataCollection.add(map);
 
-                if (firstWeatherNode.getNodeType() == Node.ELEMENT_NODE) {
-
-                    Element firstWeatherElement = (Element) firstWeatherNode;
-                    //-------
-                    NodeList idList = firstWeatherElement.getElementsByTagName(KEY_ID);
-                    Element firstIdElement = (Element) idList.item(0);
-                    NodeList textIdList = firstIdElement.getChildNodes();
-                    //--id
-                    map.put(KEY_ID, ((Node) textIdList.item(0)).getNodeValue().trim());
-
-                    //2.-------
-                    NodeList cityList = firstWeatherElement.getElementsByTagName(KEY_CITY);
-                    Element firstCityElement = (Element) cityList.item(0);
-                    NodeList textCityList = firstCityElement.getChildNodes();
-                    //--city
-                    map.put(KEY_CITY, ((Node) textCityList.item(0)).getNodeValue().trim());
-
-                    //3.-------
-                    NodeList tempList = firstWeatherElement.getElementsByTagName(KEY_TEMP_C);
-                    Element firstTempElement = (Element) tempList.item(0);
-                    NodeList textTempList = firstTempElement.getChildNodes();
-                    //--city
-                    map.put(KEY_TEMP_C, ((Node) textTempList.item(0)).getNodeValue().trim());
-
-                    //4.-------
-                    NodeList condList = firstWeatherElement.getElementsByTagName(KEY_CONDN);
-                    Element firstCondElement = (Element) condList.item(0);
-                    NodeList textCondList = firstCondElement.getChildNodes();
-                    //--city
-                    map.put(KEY_CONDN, ((Node) textCondList.item(0)).getNodeValue().trim());
-
-                    //5.-------
-                    NodeList speedList = firstWeatherElement.getElementsByTagName(KEY_SPEED);
-                    Element firstSpeedElement = (Element) speedList.item(0);
-                    NodeList textSpeedList = firstSpeedElement.getChildNodes();
-                    //--city
-                    map.put(KEY_SPEED, ((Node) textSpeedList.item(0)).getNodeValue().trim());
-
-                    //6.-------
-                    NodeList iconList = firstWeatherElement.getElementsByTagName(KEY_ICON);
-                    Element firstIconElement = (Element) iconList.item(0);
-                    NodeList textIconList = firstIconElement.getChildNodes();
-                    //--city
-                    map.put(KEY_ICON, ((Node) textIconList.item(0)).getNodeValue().trim());
-
-                    //Add to the Arraylist
-                    weatherDataCollection.add(map);
-                }
             }
 
 
