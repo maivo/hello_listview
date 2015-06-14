@@ -1,1 +1,5 @@
-code_project_weather_listview
+03_weather_listview_javabean
+
+based on 20150613_codeproject_weather_listview
+
+do without xml and use javabean
