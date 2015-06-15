@@ -16,16 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class SampleActivity extends Activity {
+public class WeatherDetailActivity extends Activity {
 
-    String position = "1";
-    String city = "";
-    String weather = "";
-    String temperature = "";
-    String windSpeed = "";
-    String iconfile = "";
+    private static final String TAG = "WeatherDetailActivity";
+
     ImageButton imgWeatherIcon;
-
     TextView tvcity;
     TextView tvtemp;
     TextView tvwindspeed;
@@ -37,7 +32,16 @@ public class SampleActivity extends Activity {
         setContentView(R.layout.detailpage);
 
         //set title
-        setTitle("SampleActivity");
+        setTitle("WeatherDetailActivity");
+
+        //retrieveWeatherData
+        final AppSession appSession = (AppSession) getApplicationContext();
+        WeatherData weatherData = appSession.getWeatherData();
+
+        Log.d(TAG, "weatherData: "+weatherData);
+
+
+
 
         try {
 
@@ -52,23 +56,19 @@ public class SampleActivity extends Activity {
             // Get position to display
             Intent i = getIntent();
 
-            this.position = i.getStringExtra("position");
-            this.city = i.getStringExtra("city");
-            this.weather=	i.getStringExtra("weather");
-            this.temperature =  i.getStringExtra("temperature");
-            this.windSpeed =  i.getStringExtra("windspeed");
-            this.iconfile = i.getStringExtra("icon");
 
-            String uri = "drawable/"+ "d" + iconfile;
+
+
+            String uri = "drawable/"+ "d" + weatherData.getIcon();
             int imageBtnResource = getResources().getIdentifier(uri, null, getPackageName());
             Drawable dimgbutton = getResources().getDrawable(imageBtnResource);
 
 
             //text elements
-            tvcity.setText(city);
-            tvtemp.setText(temperature);
-            tvwindspeed.setText(windSpeed);
-            tvCondition.setText(weather);
+            tvcity.setText(weatherData.getCity());
+            tvtemp.setText(weatherData.getTempc());
+            tvwindspeed.setText(weatherData.getWindSpeed());
+            tvCondition.setText(weatherData.getCondition());
 
             //thumb_image.setImageDrawable(image);
             imgWeatherIcon.setImageDrawable(dimgbutton);

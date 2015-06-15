@@ -1,20 +1,7 @@
 package pee.hellolistview.ui;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -26,7 +13,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.SimpleAdapter;
 
 import pee.hellolistview.R;
 
@@ -47,7 +33,7 @@ public class WeatherActivity extends Activity {
     // List items
     ListView list;
     BinderData adapter = null;
-    List<HashMap<String, String>> weatherDataCollection;
+    List<WeatherData> weatherDataCollection;
 
 
     @Override
@@ -58,35 +44,27 @@ public class WeatherActivity extends Activity {
         //set title
         setTitle(R.string.title);
 
-        try {
+
+        weatherDataCollection = new ArrayList<WeatherData>();
 
 
-            DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-            Document doc = docBuilder.parse(getAssets().open("weatherdata.xml"));
 
-            weatherDataCollection = new ArrayList<HashMap<String, String>>();
-
-            // normalize text representation
-            doc.getDocumentElement().normalize();
-
-            NodeList weatherList = doc.getElementsByTagName("weatherdata");
-
-            HashMap<String, String> map = null;
-
-
+            WeatherData weatherData = null;
             for (int i = 0; i < 4; i++) {
 
-                map = new HashMap<String, String>();
-                map.put(KEY_ID, i+ ":1");
-                map.put(KEY_CITY, "Berlin"+i);
-                map.put(KEY_TEMP_C, "0°C");
-                map.put(KEY_CONDN, "Snowing");
-                map.put(KEY_SPEED, "5 kmph");
-                map.put(KEY_ICON, "snowing");
+
+
+                weatherData = new WeatherData();
+                weatherData.setId("" +i);
+                weatherData.setCity("Calgary1:" + i);
+                weatherData.setTempc(i + " C");
+                weatherData.setCondition("Snowing");
+                weatherData.setWindSpeed(i + " kmph");
+                weatherData.setIcon("snowing");
+
 
                 //Add to the Arraylist
-                weatherDataCollection.add(map);
+                weatherDataCollection.add(weatherData);
 
             }
 
@@ -98,9 +76,9 @@ public class WeatherActivity extends Activity {
 
             Log.i("BEFORE", "<<------------- Before SetAdapter-------------->>");
 
-            list.setAdapter(bindingData);
+        list.setAdapter(bindingData);
 
-            Log.i("AFTER", "<<------------- After SetAdapter-------------->>");
+        Log.i("AFTER", "<<------------- After SetAdapter-------------->>");
 
             // Click event for single list row
             list.setOnItemClickListener(new OnItemClickListener() {
@@ -108,35 +86,19 @@ public class WeatherActivity extends Activity {
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
 
-                    Intent i = new Intent();
-                    i.setClass(WeatherActivity.this, SampleActivity.class);
+                    final AppSession appSession = (AppSession) getApplicationContext();
+                    WeatherData weatherData = weatherDataCollection.get(position);
+                    appSession.setWeatherData(weatherData);
 
-                    // parameters
-                    i.putExtra("position", String.valueOf(position + 1));
+                    Intent i = new Intent(WeatherActivity.this, WeatherDetailActivity.class);
+                    //i.setClass(WeatherActivity.this, WeatherDetailActivity.class);
 
-					/* selected item parameters
-					 * 1.	City name
-					 * 2.	Weather
-					 * 3.	Wind speed
-					 * 4.	Temperature
-					 * 5.	Weather icon
-					 */
-                    i.putExtra("city", weatherDataCollection.get(position).get(KEY_CITY));
-                    i.putExtra("weather", weatherDataCollection.get(position).get(KEY_CONDN));
-                    i.putExtra("windspeed", weatherDataCollection.get(position).get(KEY_SPEED));
-                    i.putExtra("temperature", weatherDataCollection.get(position).get(KEY_TEMP_C));
-                    i.putExtra("icon", weatherDataCollection.get(position).get(KEY_ICON));
-
-                    // start the sample activity
+                    // start the 2nd activity
                     startActivity(i);
                 }
             });
 
-        } catch (IOException ex) {
-            Log.e("Error", ex.getMessage());
-        } catch (Exception ex) {
-            Log.e("Error", "Loading exception");
-        }
+
 
     }
 

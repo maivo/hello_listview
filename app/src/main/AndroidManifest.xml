@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="pee.hellolistview.ui.SampleActivity">
+            android:name=".ui.WeatherDetailActivity">
         </activity>
     </application>
 

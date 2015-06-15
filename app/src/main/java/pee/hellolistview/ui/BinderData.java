@@ -30,15 +30,15 @@ public class BinderData extends BaseAdapter {
 
     LayoutInflater inflater;
     ImageView thumb_image;
-    List<HashMap<String,String>> weatherDataCollection;
+    List<WeatherData> weatherDataCollection;
     ViewHolder holder;
     public BinderData() {
         // TODO Auto-generated constructor stub
     }
 
-    public BinderData(Activity act, List<HashMap<String,String>> map) {
+    public BinderData(Activity act, List<WeatherData> weatherDataCollection) {
 
-        this.weatherDataCollection = map;
+        this.weatherDataCollection = weatherDataCollection;
 
         inflater = (LayoutInflater) act
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -82,13 +82,13 @@ public class BinderData extends BaseAdapter {
         }
 
         // Setting all values in listview
-
-        holder.tvCity.setText(weatherDataCollection.get(position).get(KEY_CITY));
-        holder.tvWeather.setText(weatherDataCollection.get(position).get(KEY_CONDN));
-        holder.tvTemperature.setText(weatherDataCollection.get(position).get(KEY_TEMP_C));
+        WeatherData weatherData = weatherDataCollection.get(position);
+        holder.tvCity.setText(weatherData.getCity());
+        holder.tvWeather.setText(weatherData.getCondition());
+        holder.tvTemperature.setText(weatherData.getTempc());
 
         //Setting an image
-        String uri = "drawable/"+ weatherDataCollection.get(position).get(KEY_ICON);
+        String uri = "drawable/"+ weatherData.getIcon();
         int imageResource = vi.getContext().getApplicationContext().getResources().getIdentifier(uri, null, vi.getContext().getApplicationContext().getPackageName());
         Drawable image = vi.getContext().getResources().getDrawable(imageResource);
         holder.tvWeatherImage.setImageDrawable(image);

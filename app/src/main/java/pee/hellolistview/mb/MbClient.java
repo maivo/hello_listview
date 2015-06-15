@@ -34,49 +34,6 @@ public class MbClient {
         return c.toString();
     }
 
-    public static String getSsAuthenticateUserRequestXml(Context context, String userName, String password){
-        String assetPath = "mb_securityService/securityService_authenticateUser_request.cxml";
-        String chunkTemplateContent = AssetUtils.getAssetContent(context, assetPath);
-        //get result
-        Chunk c = new Chunk();
-        c.append(chunkTemplateContent);
-        c.set("userName", userName);
-        c.set("password", password);
-        return c.toString();
-    }
-
-    public static String getAsGetAccountsRequestXml(Context context, AppSession appSession){
-        String assetPath = "mb_accountService/accountService_getAccounts_request.cxml";
-        String chunkTemplateContent = AssetUtils.getAssetContent(context, assetPath);
-        //get result
-        Chunk c = new Chunk();
-        c.append(chunkTemplateContent);
-        c.set("userName", appSession.getUserName());
-        c.set("password", appSession.getPassword());
-        c.set("channelSessionId", appSession.getChannelSessionId());
-        return c.toString();
-    }
-
-
-
-    public static void post(Context context, String endPoint, String requestXml, ResponseHandlerInterface responseHandler){
-        AsyncHttpClient client = new AsyncHttpClient();
-        HttpEntity entity;
-        try {
-            entity = new StringEntity(requestXml);
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        String  contentType = "text/xml; charset=utf-8";
-
-
-        client.addHeader("Content-Type", contentType);
-        // client.addHeader("Accept", "text/xml");
-        client.addHeader("SOAPAction", endPoint);
-        client.post(context, endPoint, entity, contentType, responseHandler);
-
-    }
 
 
 
