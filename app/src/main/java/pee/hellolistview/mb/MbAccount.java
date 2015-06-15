@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by pvu_asus on 25/05/2015.
  */
-public class Account extends Application {
+public class MbAccount extends Application {
     String accountId;
     String type;
     String currencyCode;
@@ -97,11 +97,11 @@ public class Account extends Application {
                 '}';
     }
 
-    public static String toString(List<Account> accountList) {
+    public static String toString(List<MbAccount> accountList) {
         StringBuilder builder = new StringBuilder();
         builder.append("accountList.size: "+accountList.size());
         builder.append("\n");
-        for(Account account: accountList){
+        for(MbAccount account: accountList){
             builder.append(account);
 
         }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">aHelloListView</string>
 
-    <string name="title_activity_weather">Weather Information</string>
+    <string name="title">04_mb_account_summary</string>
     <string name="strCity">Sydney</string>
     <string name="strWeather">Sunny</string>
     <string name="strTemp">32°C</string>

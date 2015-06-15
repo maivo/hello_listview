@@ -2,28 +2,26 @@ package pee.hellolistview.ui;
 
 import android.app.Application;
 
-import java.util.List;
-
-import pee.hellolistview.mb.Account;
+import pee.hellolistview.mb.MbAccount;
 
 /**
  * Created by pvu_asus on 25/05/2015.
  */
 public class AppSession extends Application {
-    WeatherData weatherData;
+    protected MbAccount account;
 
-    public WeatherData getWeatherData() {
-        return weatherData;
+    public MbAccount getAccount() {
+        return account;
     }
 
-    public void setWeatherData(WeatherData weatherData) {
-        this.weatherData = weatherData;
+    public void setAccount(MbAccount account) {
+        this.account = account;
     }
 
     @Override
     public String toString() {
         return "AppSession{" +
-                "weatherData=" + weatherData +
+                "account=" + account +
                 '}';
     }
 }

@@ -1,6 +1,8 @@
 package pee.hellolistview.ui;
 
 import pee.hellolistview.R;
+import pee.hellolistview.mb.MbAccount;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
@@ -16,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class WeatherDetailActivity extends Activity {
+public class AccountHistoryActivity extends Activity {
 
     private static final String TAG = "WeatherDetailActivity";
 
@@ -36,9 +38,9 @@ public class WeatherDetailActivity extends Activity {
 
         //retrieveWeatherData
         final AppSession appSession = (AppSession) getApplicationContext();
-        WeatherData weatherData = appSession.getWeatherData();
+        MbAccount account = appSession.getAccount();
 
-        Log.d(TAG, "weatherData: "+weatherData);
+        Log.d(TAG, "account: "+account);
 
 
 
@@ -59,16 +61,16 @@ public class WeatherDetailActivity extends Activity {
 
 
 
-            String uri = "drawable/"+ "d" + weatherData.getIcon();
+            String uri = "drawable/"+ "d" + "snowing";
             int imageBtnResource = getResources().getIdentifier(uri, null, getPackageName());
             Drawable dimgbutton = getResources().getDrawable(imageBtnResource);
 
 
             //text elements
-            tvcity.setText(weatherData.getCity());
-            tvtemp.setText(weatherData.getTempc());
-            tvwindspeed.setText(weatherData.getWindSpeed());
-            tvCondition.setText(weatherData.getCondition());
+            tvcity.setText(account.getDesc());
+            tvtemp.setText(account.getBalanceFormatted());
+            tvwindspeed.setText(account.getAvailBalFormatted());
+            tvCondition.setText(account.getStatus());
 
             //thumb_image.setImageDrawable(image);
             imgWeatherIcon.setImageDrawable(dimgbutton);

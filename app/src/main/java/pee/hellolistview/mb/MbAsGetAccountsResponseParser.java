@@ -15,17 +15,17 @@ import java.util.List;
 public class MbAsGetAccountsResponseParser {
 
     private static final String TAG = "MbAsGetAccounts.P";
-    List<Account> accountList;
+    List<MbAccount> accountList;
 
     private String text;
 
     public MbAsGetAccountsResponseParser() {
-        accountList = new ArrayList<Account>();
+        accountList = new ArrayList<MbAccount>();
     }
 
 
 
-    public  List<Account> parse(InputStream is) {
+    public  List<MbAccount> parse(InputStream is) {
         XmlPullParserFactory factory = null;
         XmlPullParser parser = null;
         try {
@@ -37,7 +37,7 @@ public class MbAsGetAccountsResponseParser {
 
             int eventType = parser.getEventType();
 
-            Account account= null;
+            MbAccount account= null;
 
             String entryKeyValue = null;
             boolean isDesc = false;
@@ -49,7 +49,7 @@ public class MbAsGetAccountsResponseParser {
                 switch (eventType) {
                     case XmlPullParser.START_TAG:
                         if (tagname.equalsIgnoreCase("return")) {
-                            account = new Account();
+                            account = new MbAccount();
                         }
                         if (tagname.equalsIgnoreCase("entry")) {
                             isBalanceFormatted = false;

@@ -15,30 +15,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import pee.hellolistview.R;
+import pee.hellolistview.mb.MbAccount;
 
-public class BinderData extends BaseAdapter {
+public class AccountSummaryBinderData extends BaseAdapter {
 
-    // XML node keys
-    static final String KEY_TAG = "weatherdata"; // parent node
-    static final String KEY_ID = "id";
-    static final String KEY_CITY = "city";
-    static final String KEY_TEMP_C = "tempc";
-    static final String KEY_TEMP_F = "tempf";
-    static final String KEY_CONDN = "condition";
-    static final String KEY_SPEED = "windspeed";
-    static final String KEY_ICON = "icon";
+
 
     LayoutInflater inflater;
     ImageView thumb_image;
-    List<WeatherData> weatherDataCollection;
+    List<MbAccount> accountCollection;
     ViewHolder holder;
-    public BinderData() {
+    public AccountSummaryBinderData() {
         // TODO Auto-generated constructor stub
     }
 
-    public BinderData(Activity act, List<WeatherData> weatherDataCollection) {
+    public AccountSummaryBinderData(Activity act, List<MbAccount> accountCollection) {
 
-        this.weatherDataCollection = weatherDataCollection;
+        this.accountCollection = accountCollection;
 
         inflater = (LayoutInflater) act
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -48,7 +41,7 @@ public class BinderData extends BaseAdapter {
     public int getCount() {
         // TODO Auto-generated method stub
 //		return idlist.size();
-        return weatherDataCollection.size();
+        return accountCollection.size();
     }
 
     public Object getItem(int arg0) {
@@ -82,13 +75,13 @@ public class BinderData extends BaseAdapter {
         }
 
         // Setting all values in listview
-        WeatherData weatherData = weatherDataCollection.get(position);
-        holder.tvCity.setText(weatherData.getCity());
-        holder.tvWeather.setText(weatherData.getCondition());
-        holder.tvTemperature.setText(weatherData.getTempc());
+        MbAccount account = accountCollection.get(position);
+        holder.tvCity.setText(account.getDesc());
+        holder.tvWeather.setText(account.getBalanceFormatted());
+        holder.tvTemperature.setText(account.getAvailBalFormatted());
 
         //Setting an image
-        String uri = "drawable/"+ weatherData.getIcon();
+        String uri = "drawable/"+ "snowing";
         int imageResource = vi.getContext().getApplicationContext().getResources().getIdentifier(uri, null, vi.getContext().getApplicationContext().getPackageName());
         Drawable image = vi.getContext().getResources().getDrawable(imageResource);
         holder.tvWeatherImage.setImageDrawable(image);
