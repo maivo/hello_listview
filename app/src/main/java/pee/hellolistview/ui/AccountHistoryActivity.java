@@ -3,19 +3,14 @@ package pee.hellolistview.ui;
 import pee.hellolistview.R;
 import pee.hellolistview.mb.MbAccount;
 
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class AccountHistoryActivity extends Activity {
@@ -23,10 +18,10 @@ public class AccountHistoryActivity extends Activity {
     private static final String TAG = "WeatherDetailActivity";
 
     ImageButton imgWeatherIcon;
-    TextView tvcity;
-    TextView tvtemp;
-    TextView tvwindspeed;
-    TextView tvCondition;
+    TextView tvTitle;
+    TextView tvBalance;
+    TextView tvAvailableBalance;
+    TextView tvStatus;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,10 +45,10 @@ public class AccountHistoryActivity extends Activity {
             //handle for the UI elements
             imgWeatherIcon = (ImageButton) findViewById(R.id.imageButtonAlpha);
             //Text fields
-            tvcity = (TextView) findViewById(R.id.textViewCity);
-            tvtemp = (TextView) findViewById(R.id.textViewTemperature);
-            tvwindspeed = (TextView) findViewById(R.id.textViewWindSpeed);
-            tvCondition = (TextView) findViewById(R.id.textViewCondition);
+            tvTitle = (TextView) findViewById(R.id.tvTitle);
+            tvBalance = (TextView) findViewById(R.id.tvBalance);
+            tvAvailableBalance = (TextView) findViewById(R.id.tvAvailableBalance);
+            tvStatus = (TextView) findViewById(R.id.tvStatus);
 
             // Get position to display
             Intent i = getIntent();
@@ -67,10 +62,10 @@ public class AccountHistoryActivity extends Activity {
 
 
             //text elements
-            tvcity.setText(account.getDesc());
-            tvtemp.setText(account.getBalanceFormatted());
-            tvwindspeed.setText(account.getAvailBalFormatted());
-            tvCondition.setText(account.getStatus());
+            tvTitle.setText(account.getDesc());
+            tvBalance.setText(account.getBalanceFormatted());
+            tvAvailableBalance.setText(account.getAvailBalFormatted());
+            tvStatus.setText(account.getStatus());
 
             //thumb_image.setImageDrawable(image);
             imgWeatherIcon.setImageDrawable(dimgbutton);

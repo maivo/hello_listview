@@ -9,9 +9,10 @@
             android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
-
+
+
             <TextView
-                android:id="@+id/textViewCity"
+                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#FFFFFF"
@@ -35,7 +36,7 @@
                 android:contentDescription="@string/strTemp"
                 android:src="@drawable/dsunny" />
  	       <TextView
- 	           android:id="@+id/textViewTemperature"
+ 	           android:id="@+id/tvBalance"
  	           android:layout_width="wrap_content"
  	           android:layout_height="wrap_content"
  	           android:layout_gravity="center"
@@ -82,7 +83,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textViewWindSpeed"
+                android:id="@+id/tvAvailableBalance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -116,12 +117,14 @@
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </TableRow>
-
+
+
         <TableRow
             android:id="@+id/tableRow5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
-		    <TextView
+
+		    <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Condition"
@@ -129,7 +132,7 @@
                 android:textSize="20dp" />
             
 	       <TextView
-                android:id="@+id/textViewCondition"
+                android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"

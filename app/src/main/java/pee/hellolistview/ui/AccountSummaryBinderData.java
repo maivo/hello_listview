@@ -1,17 +1,13 @@
 package pee.hellolistview.ui;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import pee.hellolistview.R;
@@ -22,7 +18,7 @@ public class AccountSummaryBinderData extends BaseAdapter {
 
 
     LayoutInflater inflater;
-    ImageView thumb_image;
+
     List<MbAccount> accountCollection;
     ViewHolder holder;
     public AccountSummaryBinderData() {
@@ -62,10 +58,10 @@ public class AccountSummaryBinderData extends BaseAdapter {
             vi = inflater.inflate(R.layout.list_row, null);
             holder = new ViewHolder();
 
-            holder.tvCity = (TextView)vi.findViewById(R.id.tvCity); // city name
-            holder.tvWeather = (TextView)vi.findViewById(R.id.tvCondition); // city weather overview
-            holder.tvTemperature =  (TextView)vi.findViewById(R.id.tvTemp); // city temperature
-            holder.tvWeatherImage =(ImageView)vi.findViewById(R.id.list_image); // thumb image
+            holder.tvTitle = (TextView)vi.findViewById(R.id.tvTitle); // city name
+            holder.tvBalance = (TextView)vi.findViewById(R.id.tvBalance); // city weather overview
+            holder.tvAvailableBalance =  (TextView)vi.findViewById(R.id.tvAvailableBalance); // city temperature
+
 
             vi.setTag(holder);
         }
@@ -76,15 +72,11 @@ public class AccountSummaryBinderData extends BaseAdapter {
 
         // Setting all values in listview
         MbAccount account = accountCollection.get(position);
-        holder.tvCity.setText(account.getDesc());
-        holder.tvWeather.setText(account.getBalanceFormatted());
-        holder.tvTemperature.setText(account.getAvailBalFormatted());
+        holder.tvTitle.setText(account.getDesc());
+        holder.tvBalance.setText("Balance: " + account.getBalanceFormatted());
+        holder.tvAvailableBalance.setText("Available Balance: " + account.getAvailBalFormatted());
 
-        //Setting an image
-        String uri = "drawable/"+ "snowing";
-        int imageResource = vi.getContext().getApplicationContext().getResources().getIdentifier(uri, null, vi.getContext().getApplicationContext().getPackageName());
-        Drawable image = vi.getContext().getResources().getDrawable(imageResource);
-        holder.tvWeatherImage.setImageDrawable(image);
+
 
         return vi;
     }
@@ -94,10 +86,10 @@ public class AccountSummaryBinderData extends BaseAdapter {
      * */
     static class ViewHolder{
 
-        TextView tvCity;
-        TextView tvTemperature;
-        TextView tvWeather;
-        ImageView tvWeatherImage;
+        TextView tvTitle;
+        TextView tvBalance;
+        TextView tvAvailableBalance;
+
     }
 
 }

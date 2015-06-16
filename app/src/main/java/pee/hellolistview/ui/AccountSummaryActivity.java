@@ -40,7 +40,7 @@ public class AccountSummaryActivity extends Activity {
 
 
         MbAccount account = null;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 100; i++) {
 
 
             account = new MbAccount();
